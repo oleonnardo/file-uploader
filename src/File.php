@@ -92,14 +92,17 @@ class File {
 
 
     /**
-     * @param $destiny
-     * @param $filename
+     * @param      $destiny
+     * @param      $filename
+     * @param int  $mode
+     * @param bool $recursive
+     * @param null $context
      * @return bool
      */
-    public function move($destiny, $filename) {
+    public function move($destiny, $filename, $mode = 0777, $recursive = false, $context = null) {
 
         if($this->exists($destiny) === false) {
-            $this->makeDirectory($destiny);
+            $this->makeDirectory($destiny, $mode, $recursive, $context);
         }
 
         return move_uploaded_file($this->tmp_name, $destiny.$filename);

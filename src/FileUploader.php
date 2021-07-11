@@ -26,11 +26,14 @@ class FileUploader {
 
 
     /**
-     * @param null $param
+     * @param string $param
      * @return array|string|null
      * @throws FileException
      */
-    public function save($param = null) {
+    public function save($param = '') {
+
+        // define nome do parâmetro
+        $this->parameter($param);
 
         $filename;
         $diretorio  = $this->getPath();
@@ -94,7 +97,7 @@ class FileUploader {
      * @return $this
      */
     public function parameter($param) {
-        $this->paramName = $param;
+        $this->paramName = empty($param) ? $this->paramName : $param;
 
         return $this;
     }
@@ -153,8 +156,4 @@ class FileUploader {
         return $this->filename . "." . $extension;
     }
 
-
-    private function isMultiple() {
-
-    }
 }
