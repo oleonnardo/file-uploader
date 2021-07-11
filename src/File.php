@@ -92,18 +92,6 @@ class File {
 
 
     /**
-     * @param $param
-     */
-    private function reoganizeVariableFile ($param) {
-        $newFile    = [];
-        $countFiles = count($this->getOriginalName());
-
-        for($index = 0; $index < $countFiles; $index++) {
-            $newFile[] = $this->initClass($param, $index);
-        }
-    }
-
-    /**
      * @param $destiny
      * @param $filename
      * @return bool
