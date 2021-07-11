@@ -1,0 +1,21 @@
+{
+   "name": "oleonnardo/file-uploader",
+   "license": "",
+   "authors": [
+      {
+         "name": "Leonardo Araújo",
+         "email": "leonardo.araujornb@gmail.com"
+      }
+   ],
+   "require": {
+      "symfony/var-dumper": "^5.3"
+   },
+   "autoload": {
+      "psr-4": {
+         "App\\Leonardo\\": "src"
+      },
+      "files": [
+         "src/helpers.php"
+      ]
+   }
+}
