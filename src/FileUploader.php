@@ -80,6 +80,37 @@ class FileUploader {
 
 
     /**
+     * @param null $oldFilename
+     * @param null $param
+     * @return null|string
+     * @throws \App\Leonardo\FileException
+     */
+    public function update($oldFilename = null, $param = null) {
+
+        // define nome do parâmetro
+        $this->parameter($param);
+
+        $filename = (strrchr($oldFilename, '/')) ?
+            str_replace('/', '', strrchr($oldFilename, '/')) :
+            $oldFilename;
+        $diretorio  = $this->getPath();
+
+        $file = empty($this->files) ? new File($this->paramName) : $this->files;
+
+        if($file->hasMultipleFiles() === false) {
+
+            $this->processamento($file);
+
+            if ($this->exists($diretorio . $filename)) {
+                $this->get($diretorio.$filename)->delete();
+            }
+        }
+
+        return $filename;
+    }
+
+
+    /**
      * @param \App\Leonardo\File $file
      * @return string|null
      * @throws FileException
@@ -96,9 +127,7 @@ class FileUploader {
                 )
             );
         } else {
-
-            throw new FileException("Erro no upload do arquivo: " . $file->getError());
-
+            throw new \App\Leonardo\FileException("Erro no upload do arquivo: " . $file->getError());
         }
 
         return $filename;

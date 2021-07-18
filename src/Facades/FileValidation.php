@@ -44,8 +44,8 @@ trait FileValidation {
      * @var array
      */
     private $rules = [
-        'size'      => null,
-        'extension' => [],
+        'size'  => null,
+        'type'  => [],
     ];
 
     /** @var array */
@@ -119,10 +119,10 @@ trait FileValidation {
      * @return bool
      */
     private function validateExtension($extension) {
-        $rule = is_array($this->rules['extension']) ?
-            $this->rules['extension'] : [$this->rules['extension']];
+        $rule = is_array($this->rules['type']) ?
+            $this->rules['type'] : [$this->rules['type']];
 
-        return ((count($rule) > 0) && in_array($extension, $rule));
+        return ((count($rule) > 0) && !in_array($extension, $rule));
     }
 
 
