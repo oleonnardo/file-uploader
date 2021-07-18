@@ -1,6 +1,6 @@
 {
    "name": "oleonnardo/file-uploader",
-   "type": "project",
+   "type": "library",
    "description": "Biblioteca de manipulação de arquivos",
    "keywords": ["uploader", "laravel", "project", "php"],
    "license": "MIT",
