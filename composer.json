@@ -1,6 +1,7 @@
 {
    "name": "oleonnardo/file-uploader",
    "license": "Apache-2.0",
+   "description": "Biblioteca de manipulação de arquivos",
    "authors": [
       {
          "name": "Leonardo Araújo",
