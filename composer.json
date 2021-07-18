@@ -1,17 +1,19 @@
 {
    "name": "oleonnardo/file-uploader",
-   "license": "",
+   "license": "Apache-2.0",
    "authors": [
       {
          "name": "Leonardo Araújo",
          "email": "leonardo.araujornb@gmail.com"
       }
    ],
+   "require": {
+      "php": ">=5.6"
+   },
    "autoload": {
       "psr-4": {
          "App\\Leonardo\\": "src",
          "App\\Leonardo\\Facades\\": "src/Facades"
-
       },
       "files": [
          "src/helpers.php"
