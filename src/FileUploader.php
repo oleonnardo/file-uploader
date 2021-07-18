@@ -115,7 +115,7 @@ class FileUploader {
      * @return string|null
      * @throws FileException
      */
-    public function processamento(File $file) {
+    private function processamento(File $file) {
         $filename = null;
 
         if($file->getError() === 0) {
