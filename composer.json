@@ -3,6 +3,7 @@
    "license": [
       "GPL-2.0"
    ],
+   "version": "1.0",
    "description": "Biblioteca de manipulação de arquivos",
    "authors": [
       {
