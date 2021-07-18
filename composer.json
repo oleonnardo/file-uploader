@@ -1,10 +1,10 @@
 {
    "name": "oleonnardo/file-uploader",
-   "license": [
-      "GPL-2.0"
-   ],
-   "version": "1.0",
+   "type": "project",
    "description": "Biblioteca de manipulação de arquivos",
+   "keywords": ["uploader", "laravel", "project", "php"],
+   "license": "MIT",
+   "version": "1.0",
    "authors": [
       {
          "name": "Leonardo Araújo",
@@ -24,5 +24,7 @@
       "files": [
          "src/helpers.php"
       ]
-   }
+   },
+   "minimum-stability": "dev",
+   "prefer-stable": true
 }
