@@ -7,5 +7,4 @@ if(! function_exists('uploader')) {
     function uploader() {
         return new \App\Leonardo\FileUploader();
     }
-
 }

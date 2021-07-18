@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Leonardo;
+namespace App\Leonardo\Facades;
+
+use App\Leonardo\Facades\PathInfo;
 
 class File {
 
@@ -202,5 +204,32 @@ class File {
     private function makeDirectory($pathname, $mode = 0777, $recursive = false, $context = null) {
         return mkdir($pathname, $mode, $recursive, $context);
     }
+
+
+    /**
+     * @param string $directory
+     * @return array
+     */
+    public static function readdir($directory) {
+        $files = [];
+
+        if (is_dir($directory)) {
+            if ($dir = opendir($directory)) {
+                while (($file = readdir($dir)) !== false){
+
+                    if (in_array($file, ['.', '..'])) {
+                        continue;
+                    }
+
+                    $files[] = new PathInfo($directory . $file);
+                }
+
+                closedir($dir);
+            }
+        }
+
+        return $files;
+    }
+
 
 }

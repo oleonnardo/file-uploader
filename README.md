@@ -1,2 +1,6 @@
-# file-uploader
-Classe para realizar upload de arquivos
+## File Uploader
+
+Biblioteca de manipulação de upload arquivos com HTML usando o PHP 
+
+
+

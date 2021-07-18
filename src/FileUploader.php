@@ -2,9 +2,14 @@
 
 namespace App\Leonardo;
 
-use App\Leonardo\File;
+use App\Leonardo\Facades\File;
+use App\Leonardo\Facades\FileValidation;
+use App\Leonardo\Facades\PathInfo;
+use App\Leonardo\FileException;
 
 class FileUploader {
+
+    use FileValidation;
 
     /** @var $_FILES */
     private $files;
@@ -26,6 +31,20 @@ class FileUploader {
 
 
     /**
+     * @param string $filename
+     * @return PathInfo|void
+     */
+    public function get($filename) {
+
+        if($this->exists($filename)) {
+            return new PathInfo($filename);
+        }
+
+        return;
+    }
+
+
+    /**
      * @param string $param
      * @return array|string|null
      * @throws FileException
@@ -37,17 +56,22 @@ class FileUploader {
 
         $filename;
         $diretorio  = $this->getPath();
-        $file       = new File($this->paramName);
 
-        if ($this->multiple || $file->hasMultipleFiles()) {
+        $files = $this->files;
 
-            foreach($file->getInstanceMultiple() as $item) {
+        if (empty($files)) {
+            $files = new File($this->paramName);
+        }
+
+        if ($this->multiple || $files->hasMultipleFiles()) {
+
+            foreach($files->getInstanceMultiple() as $item) {
                 $filename[] = $this->processamento($item);
             }
 
         } else {
 
-            $filename = $this->processamento($file);
+            $filename = $this->processamento($files);
 
         }
 
@@ -156,4 +180,12 @@ class FileUploader {
         return $this->filename . "." . $extension;
     }
 
+
+    /**
+     * @param $filename
+     * @return bool
+     */
+    private function exists($filename) {
+        return file_exists($filename) && !is_dir($filename);
+    }
 }
